@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/java"/>
+	<classpathentry kind="src" path="test/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="lib/eclipse/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/freemarker-2.3.15.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/hibernate-jpa-2.0-api-1.0.0.Final.jar" sourcepath="C:/3pplib/hibernate-distribution-3.5.1-Final/lib/jpa/hibernate-jpa-2.0-api-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/hibernate-tools.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/hibernate3.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/javassist-3.9.0.GA.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/jsp-api.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/mysql-connector-java-5.1.12-bin.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/ognl-2.7.3.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/servlet-api.jar" sourcepath="C:/3pplib/apache-tomcat-6.0.20-src/java"/>
+	<classpathentry kind="lib" path="lib/eclipse/slf4j-api-1.5.11.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/slf4j-log4j12-1.5.11.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/struts2-core-2.1.8.1.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/xwork-core-2.1.6.jar" sourcepath="C:/3pplib/struts/xwork-2.1.5/core/src/main/java"/>
+	<classpathentry kind="lib" path="lib/eclipse/org.springframework.core-3.0.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/org.springframework.asm-3.0.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/org.springframework.beans-3.0.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/org.springframework.context-3.0.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/org.springframework.expression-3.0.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/org.springframework.web-3.0.2.RELEASE.jar" sourcepath="C:/3pplib/spring/spring-framework-3.0.2.RELEASE/src/org.springframework.web-sources-3.0.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/commons-fileupload-1.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/jstl.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/standard.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/sitemesh-2.4.2.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/struts2-dojo-plugin-2.1.8.1.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/commons-math-2.1.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/org.springframework.orm-3.0.2.RELEASE.jar" sourcepath="C:/3pplib/spring/spring-framework-3.0.2.RELEASE/src/org.springframework.orm-sources-3.0.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/eclipse/org.springframework.transaction-3.0.2.RELEASE.jar" sourcepath="C:/3pplib/spring/spring-framework-3.0.2.RELEASE/src/org.springframework.transaction-sources-3.0.2.RELEASE.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,131 @@
+<project name="Busimu Core Project" default="compile" basedir=".">
+
+  <!-- Name of project and version -->
+  <property name="proj.name" value="Busimu Core" />
+  <property name="proj.shortname" value="busimu" />
+  <property name="version" value="1.0" />
+
+  <!-- Global properties for this build -->
+  <property name="database.dir" value="database" />
+  <property name="src.java.dir" value="src/java" />
+  <property name="web.dir" value="web"/>
+  <property name="build.lib.dir" value="lib/build" />
+  <property name="war.lib.dir" value="lib/dist" />
+  <property name="build.dir" value="build" />
+  <property name="build.classes.dir" value="${build.dir}/classes" />
+  <property name="build.sql.dir" value="${build.dir}/sql" />
+  <property name="build.war.dir" value="${build.dir}/war" />
+  <property name="build.war.lib.dir" value="${build.war.dir}/WEB-INF/lib" />
+  
+
+  <!-- Classpath declaration -->
+  <path id="build.classpath">
+    <fileset dir="${build.lib.dir}">
+      <include name="**/*.jar" />
+      <include name="**/*.zip" />
+    </fileset>
+  </path>
+
+  <!-- Useful shortcuts -->
+  <patternset id="meta.files">
+    <include name="**/*.xml" />
+    <include name="**/*.properties" />
+  </patternset>
+  
+  <patternset id="web.files">
+    <exclude name=".svn/**/*"/>
+  </patternset>
+
+  <!-- Clean up -->
+  <target name="clean" description="Clean the build directory">
+    <delete dir="${build.dir}" />
+    <mkdir dir="${build.dir}" />
+  </target>
+
+  <!-- Compile Java source -->
+  <target name="compile" depends="clean">
+    <mkdir dir="${build.classes.dir}" />
+    <javac srcdir="${src.java.dir}" destdir="${build.classes.dir}"  debug="true" classpathref="build.classpath" />
+  </target>
+
+  <!-- Copy metadata to build classpath -->
+  <target name="copymetafiles">
+    <mkdir dir="${build.classes.dir}" />
+    <copy todir="${build.classes.dir}">
+      <fileset dir="${src.java.dir}">
+        <patternset refid="meta.files" />
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="build" depends="compile, copymetafiles, schemaexport">
+    <jar destfile="${build.dir}/busimu.jar" basedir="${build.classes.dir}" />
+  </target>
+  
+  <target name="build-jar" depends="compile, copymetafiles">
+      <jar destfile="${build.dir}/busimu.jar" basedir="${build.classes.dir}" />
+  </target>
+  
+  <target name="build-war" depends="build-jar">
+    <mkdir dir="${build.war.dir}" />
+    <copy todir="${build.war.dir}">
+      <fileset dir="${web.dir}">
+        <patternset refid="web.files"/>
+      </fileset>
+    </copy>
+    <mkdir dir="${build.war.lib.dir}"/>
+    <copy todir="${build.war.lib.dir}">
+      <fileset dir="${war.lib.dir}">
+        <include name="**/*.jar"/>
+      </fileset>
+      <fileset dir="${build.dir}">
+        <include name="busimu.jar" />
+      </fileset>
+    </copy>
+    <war destfile="${build.dir}/busimu.war" basedir="${build.war.dir}" />
+  </target>
+
+  <!-- Hibernate Tools import -->
+  <taskdef name="hibernatetool" classname="org.hibernate.tool.ant.HibernateToolTask" classpathref="build.classpath" />
+
+  <!-- Export the database schema -->
+  <target name="schemaexport" depends="compile, copymetafiles" description="Exports a generated schema to DB and file">
+    <mkdir dir="${build.sql.dir}" />
+    <hibernatetool destdir="${build.sql.dir}">
+      <classpath path="${build.classes.dir}" />
+      <jpaconfiguration />
+      <!-- Use META-INF/persistence.xml -->
+      <hbm2ddl drop="true" create="false" export="false" outputfilename="${proj.shortname}-drop.sql" delimiter=";" format="true" />
+      <hbm2ddl drop="false" create="true" export="false" outputfilename="${proj.shortname}-create.sql" delimiter=";" format="true" />
+    </hibernatetool>
+  </target>
+
+  <!-- Start the HSQL DB server , unittest?-->
+  <!--
+    <target name="startdb" description="Run HSQL database server with clean DB">
+        <delete dir="${database.dir}"/>
+        <java classname="org.hsqldb.Server"
+              fork="yes"
+              classpathref="build.classpath"
+              failonerror="true">
+            <arg value="-database.0"/>
+            <arg value="file:${database.dir}/db"/>
+        </java>
+    </target>
+    -->
+  <!-- Start the HSQL DB browser tool -->
+  <!--
+    <target name="dbmanager" description="Start HSQL DB manager">
+        <java
+            classname="org.hsqldb.util.DatabaseManagerSwing"
+            fork="yes"
+            classpathref="build.classpath"
+            failonerror="true">
+            <arg value="-url"/>
+            <arg value="jdbc:hsqldb:hsql://localhost/"/>
+            <arg value="-driver"/>
+            <arg value="org.hsqldb.jdbcDriver"/>
+        </java>
+    </target>
+-->
+</project>

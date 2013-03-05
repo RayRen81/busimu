@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+  <constant name="struts.devModes" value="true" />
+  <constant name="struts.i18n.encoding" value="UTF-8" />
+  <constant name="struts.custom.i18n.resources" value="i18nResources" />
+  <package name="core" extends="struts-default">
+    <result-types>
+      <!-- 使用result-type元素注册ValidationCodeResult结果类型 -->
+      <result-type name="validationCodeResult" class="com.busimu.core.result.ValidationCodeResult" />
+    </result-types>
+    <action name="login" class="com.busimu.core.action.LoginAction">
+      <result name="success" type="redirect">/user/</result>
+      <result name="input">/login.jsp</result>
+    </action>
+    <action name="logout" class="com.busimu.core.action.LogoutAction">
+      <result name="success" type="redirect">/</result>
+    </action>
+    <action name="adminLogin">
+      <result>/admin/index.jsp</result>
+    </action>
+    <action name="generateLicenses" class="com.busimu.core.action.GenerateLicensesAction">
+      <result name="success" type="stream">
+        <param name="contentTye">text/plain</param>
+        <param name="inputName">licenseFile</param>
+        <param name="contentDisposition">attachement;fileName="${fileName}.txt"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    <action name="register" class="com.busimu.core.action.RegisterAction">
+      <result name="success" type="redirect">/user/</result>
+      <result name="input">/user/register.jsp</result>
+    </action>
+    <action name="activate" class="com.busimu.core.action.ActivateAction">
+      <result name="success" type="redirect">/user/</result>
+      <result name="error">/user/index.jsp</result>
+    </action>
+    <action name="genValidationCode" class="com.busimu.core.action.GenerateValidationCodeAction">
+      <result name="success" type="validationCodeResult" />
+    </action>
+    
+    <action name="courseCreate">
+      <result>/user/course/courseCreate.jsp</result>
+    </action>
+    <action name="createCourse" class="com.busimu.core.action.CourseCreateAction">
+      <result name="success" type="redirect">/user/courseManagement?campaignId=${campaignId}</result>
+      <result name="input">/user/course/courseCreate.jsp</result>
+    </action>
+    <action name="marketManagement">
+      <result>/user/course/marketManagement.jsp</result>
+    </action>
+    <action name="courseManagement">
+      <result>/user/course/courseManagement.jsp</result>
+    </action>
+    <action name="home">
+      <result>/user/index.jsp</result>
+    </action>
+    <action name="registerCourse" class="com.busimu.core.action.RegisterCourseAction">
+      <result name="success" type="redirect">/user/courseManagement?campaignId=${courseId}</result>
+      <result name="input">/user/index.jsp</result>
+    </action>
+    <action name="assignStudent" class="com.busimu.core.action.AssignStudentAction">
+      <result name="success" type="redirect">/user/marketManagement?campaignId=${campaignId}&amp;marketId=${marketId}</result>
+      <result name="home" type="redirect">/user/home</result>
+    </action>
+    <action name="unassignStudent" class="com.busimu.core.action.UnassignStudentAction">
+      <result name="success" type="redirect">/user/marketManagement?campaignId=${campaignId}&amp;marketId=${marketId}</result>
+    </action>
+    <action name="saveSchedule" class="com.busimu.core.action.SaveScheduleAction" >
+      <result name="success" type="redirect">/user/courseManagement?campaignId=${campaignId}</result> 
+      <result name="input">/user/course/courseManagement.jsp?campaignId=${campaignId}</result>
+    </action>
+    <action name="editCourse" class="com.busimu.core.action.CourseEditAction">
+      <result name="success" type="redirect">/user/courseManagement?campaignId=${campaignId}</result>
+      <result name="input" >/user/course/courseManagement.jsp?campaignId=${campaignId}</result>
+    </action>
+    <action name="addMarket" class="com.busimu.core.action.AddMarketInCampaignAction">
+      <result name="success" type="redirect">/user/courseManagement?campaignId=${campaignId}</result>
+      <result name="input">/user/course/courseManagement.jsp?campaignId=${campaignId}</result>
+    </action>
+    <action name="editMarket" class="com.busimu.core.action.MarketEditAction">
+      <result name="success" type="redirect">/user/marketManagement?campaignId=${campaignId}&amp;marketId=${marketId}</result>
+      <result name="input">/user/course/marketManagement.jsp?campaignId=${campaignId}&amp;marketId=${marketId}</result>
+    </action>
+    <action name="addCorp" class="com.busimu.core.action.CorporationAddAction">
+      <result name="success" type="redirect">/user/marketManagement?campaignId=${campaignId}&amp;marketId=${marketId}</result>
+      <result name="input">/user/course/marketManagement.jsp?campaignId=${campaignId}&amp;marketId=${marketId}</result>
+    </action>
+    <action name="editCorp" class="com.busimu.core.action.CorporationEditAction">
+      <result name="success" type="redirect">/user/marketManagement?campaignId=${campaignId}&amp;marketId=${marketId}</result>
+      <result name="input">/user/course/marketManagement.jsp?campaignId=${campaignId}&amp;marketId=${marketId}</result>
+    </action>
+    <action name="deleteCorp" class="com.busimu.core.action.CorporationDeleteAction">
+      <result name="success" type="redirect">/user/marketManagement?campaignId=${campaignId}&amp;marketId=${marketId}</result>
+    </action>
+    <action name="deleteMarket" class="com.busimu.core.action.MarketDeleteAction">
+      <result name="success" type="redirect">/user/courseManagement?campaignId=${campaignId}</result>
+    </action>
+    <action name="deleteCourse" class="com.busimu.core.action.CourseDeleteAction">
+      <result name="success" type="redirect">/user/courseManagement</result>
+    </action>
+    <action name="addRound" class="com.busimu.core.action.RoundAddAction">
+      <result name="success" type="redirect">/user/courseManagement?campaignId=${campaignId}</result>
+    </action>
+    <action name="reduceRound" class="com.busimu.core.action.RoundReduceAction">
+      <result name="success" type="redirect">/user/courseManagement?campaignId=${campaignId}</result>
+    </action>
+    <action name="changeCourseStatus" class="com.busimu.core.action.CourseChangeStatusAction">
+      <result name="success" type="redirect">/user/courseManagement?campaignId=${campaignId}</result>
+    </action>
+    <action name="courseProgress">
+      <result name="success">/user/course/courseProgress.jsp</result>
+    </action>
+    <action name="studentManagement">
+      <result name="success">/user/mngstudents/studentManagement.jsp</result>
+    </action>
+    <action name="decisionProcess">
+      <result name="success">/user/student/decisionProcess.jsp</result>
+    </action>
+  </package>
+</struts>

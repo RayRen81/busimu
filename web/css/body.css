@@ -1,0 +1,28 @@
+* { margin:0;
+    padding:0;
+}
+
+#content-panel {
+}
+
+div {
+	border : 0px; 
+	border-style: solid;
+	border-color: gray;
+}
+
+.gray {
+	color: gray;
+}
+
+.hidden {
+	display: none;		
+}
+
+.layout-table {
+	width: 100%;
+}
+
+.layout-table-left-col {
+	width: 250px;
+}

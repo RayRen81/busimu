@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+  xmlns="http://www.springframework.org/schema/beans" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:util="http://www.springframework.org/schema/util" 
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation=
+    "http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/util 
+    http://www.springframework.org/schema/util/spring-util-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+  default-init-method="init">
+  <context:annotation-config />
+  <bean name="entityManagerFactory" class="javax.persistence.Persistence" factory-method="createEntityManagerFactory">
+    <constructor-arg value="busimu"/>
+    <constructor-arg>
+      <map>
+        <entry key="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+        <entry key="hibernate.connection.url" value="jdbc:mysql://localhost:3306/testdb" />
+        <entry key="hibernate.connection.useUnicode" value="true" />
+        <entry key="hibernate.connection.characterEncoding" value="UTF-8" />
+        <entry key="hibernate.connection.username" value="testdb" />
+        <entry key="hibernate.connection.password" value="testdb" />
+        <entry key="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
+        <entry key="hibernate.hbm2ddl.auto" value="create" />
+        <entry key="hibernate.show_sql" value="false" />
+        <entry key="hibernate.format_sql" value="false" />
+        <entry key="use_sql_comments" value="false" />
+      </map>
+    </constructor-arg>
+  </bean>
+  
+  <bean name="userMngDao" class="com.busimu.core.dao.impl.UserMngDaoPolicyJpaImpl">
+    <property name="entityManagerFactory" ref="entityManagerFactory"/>
+  </bean>
+  
+  <bean name="campaignMngDao" class="com.busimu.core.dao.impl.CampaignMngDaoPolicyJpaImpl">
+    <property name="entityManagerFactory" ref="entityManagerFactory" />
+  </bean>
+  
+</beans>

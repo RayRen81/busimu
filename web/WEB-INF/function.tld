@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+        version="2.0">
+  <tlib-version>1.0</tlib-version>
+  <uri>/busimu-functions</uri>
+  <function>
+    <name>getCampaignById</name>
+    <function-class>com.busimu.core.taglib.EntityLookupFunction</function-class>
+    <function-signature>com.busimu.core.model.Campaign getCampaignById(java.lang.String)</function-signature>
+  </function>
+  
+  <function>
+    <name>getMarketById</name>
+    <function-class>com.busimu.core.taglib.EntityLookupFunction</function-class>
+    <function-signature>com.busimu.core.model.SimMarket getMarketById(java.lang.String)</function-signature>
+  </function>
+  
+  <function>
+    <name>getUserById</name>
+    <function-class>com.busimu.core.taglib.EntityLookupFunction</function-class>
+    <function-signature>com.busimu.core.model.User getUserById(java.lang.String)</function-signature>
+  </function>
+  
+  <function>
+    <name>getRoundById</name>
+    <function-class>com.busimu.core.taglib.EntityLookupFunction</function-class>
+    <function-signature>com.busimu.core.model.Round getRoundById(java.lang.String)</function-signature>
+  </function>  
+  
+  <function>
+    <name>getUnassignedUsers</name>
+    <function-class>com.busimu.core.taglib.UtilFunction</function-class>
+    <function-signature>java.util.Set&lt;com.busimu.core.model.User&gt; getUnassignedUsers(com.busimu.core.model.Campaign)</function-signature>
+  </function>
+  
+  <function>
+    <name>getAssignedMarket</name>
+    <function-class>com.busimu.core.taglib.UtilFunction</function-class>
+    <function-signature>com.busimu.core.model.SimMarket getAssignedMarket(com.busimu.core.model.User, com.busimu.core.model.Campaign)</function-signature>
+  </function>
+  
+  <function>
+    <name>getMetaAsDate</name>
+    <function-class>com.busimu.core.taglib.UtilFunction</function-class>
+    <function-signature>java.util.Date getMetaAsDate(com.busimu.core.model.MetaAssociated, java.lang.String)</function-signature>
+  </function>
+  
+  <function>
+    <name>getRealLoginHistory</name>
+    <function-class>com.busimu.core.taglib.UtilFunction</function-class>
+    <function-signature>java.util.List&lt;com.busimu.core.model.LoginHistory&gt; getRealLoginHistory(com.busimu.core.model.User, com.busimu.core.model.Campaign)</function-signature>
+  </function>
+  
+  <function>
+    <name>getJoinedCorp</name>
+    <function-class>com.busimu.core.taglib.UtilFunction</function-class>
+    <function-signature>com.busimu.core.model.SimCorporation getJoinedCorp(com.busimu.core.model.User, com.busimu.core.model.Campaign)</function-signature>
+  </function>
+  
+</taglib>

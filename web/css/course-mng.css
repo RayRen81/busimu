@@ -1,0 +1,35 @@
+#left-panel {
+	min-width: 250px;
+}
+
+#tree-menu {
+	min-height : 100px;
+}
+
+#unassigned-list {
+}
+
+.table {
+	display: table;
+}
+
+.tr {
+	display: table-row;
+}
+
+.td {
+	display: table-cell;
+}
+
+.student-list {
+	min-width: 250px;
+	min-height: 150px;
+}
+
+#ui-datepicker-div {
+	font-size: 65%;
+}
+
+.align-top {
+	vertical-align: top;
+}

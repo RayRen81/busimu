@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:com/busimu/core/busimuContext.xml</param-value>
+  </context-param>
+  
+  <listener>
+    <description>Login Time History Listener</description>
+    <listener-class>com.busimu.core.report.login.LoginListener</listener-class>
+  </listener>
+
+  <filter>
+    <filter-name>openEntityManagerInViewFilter</filter-name>
+    <filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
+  </filter>
+  
+  <filter>
+    <filter-name>setupModelBeanInSession</filter-name>
+    <filter-class>com.busimu.core.filter.SetupModelBeanInSession</filter-class>
+  </filter>
+  
+  <filter>
+    <filter-name>struts-cleanup</filter-name>
+    <filter-class>org.apache.struts2.dispatcher.ActionContextCleanUp</filter-class>
+  </filter>
+
+  <filter>
+    <filter-name>sitemesh</filter-name>
+    <filter-class>com.opensymphony.module.sitemesh.filter.PageFilter</filter-class>
+  </filter>
+  
+  <filter>
+    <filter-name>struts2</filter-name>
+    <filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>
+  </filter>
+  
+  <filter-mapping>
+    <filter-name>openEntityManagerInViewFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <filter-mapping>
+    <filter-name>setupModelBeanInSession</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <filter-mapping>
+    <filter-name>struts-cleanup</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>sitemesh</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <filter-mapping>
+    <filter-name>struts2</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+
+  <servlet-mapping>
+    <servlet-name>jsp</servlet-name>
+    <url-pattern>*.inc</url-pattern>
+  </servlet-mapping>
+
+<!-- 
+  <login-config>
+    <auth-method>FORM</auth-method>
+    <form-login-config>
+      <form-login-page>/login.jsp</form-login-page>
+      <form-error-page>/login.jsp</form-error-page>
+    </form-login-config>
+  </login-config>
+
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>protected</web-resource-name>
+      <url-pattern>/user/*</url-pattern>
+      <http-method>GET</http-method>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>TEACHER</role-name>
+      <role-name>STUDENT</role-name>
+    </auth-constraint>
+  </security-constraint>
+  
+ -->
+ 
+  <welcome-file-list>
+    <welcome-file>login.jsp</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+
+</web-app>
